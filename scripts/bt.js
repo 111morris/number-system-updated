@@ -5,8 +5,8 @@ const convertBtn = document.querySelector("#convertBtn");
 const resultArea = document.querySelector("#resultArea");
 const errorMessage = document.querySelector('#errorMessage');
 
-// choiceFrom.addEventListener('change', checkValidation);
-// inputValue.addEventListener('input', checkValidation);
+choiceFrom.addEventListener('change', checkValidation);
+inputValue.addEventListener('input', checkValidation);
 function checkValidation() {
  const choice = choiceFrom.value;
  const value = inputValue.value;
@@ -17,19 +17,27 @@ function checkValidation() {
    isValid = /^-?[0-9]+$/.test(value);
    theBase = 'decimal';
    break;
+
   case '2':
    isValid = /^-?[01]+$/.test(value);
    theBase = 'binary';
    break;
+
   case '3':
    isValid = /^-?[0-7]+$/.test(value);
    theBase = 'octal';
    break;
+
   case '4':
+
    isValid = /^-?[0-9A-Fa-f]+$/.test(value);
    theBase = 'hexadecimal';
    break;
+
+  default:
+   isValid = false;
  }
+
  if (!isValid && value !== '') {
   errorMessage.innerText = `Invalid ${theBase} value`;
   convertBtn.disabled = true;
@@ -38,6 +46,8 @@ function checkValidation() {
   convertBtn.disabled = false;
  }
 }
+
+
 convertBtn.addEventListener('click', () => {
  const from = choiceFrom.value;
  const value = inputValue.value;
