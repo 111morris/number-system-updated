@@ -5,8 +5,8 @@ const convertBtn = document.querySelector("#convertBtn");
 const resultArea = document.querySelector("#resultArea");
 const errorMessage = document.querySelector('#errorMessage');
 
-choiceFrom.addEventListener('change', checkValidation);
-inputValue.addEventListener('input', checkValidation);
+// choiceFrom.addEventListener('change', checkValidation);
+// inputValue.addEventListener('input', checkValidation);
 function checkValidation() {
  const choice = choiceFrom.value;
  const value = inputValue.value;
@@ -14,19 +14,19 @@ function checkValidation() {
  let theBase;
  switch (choice) {
   case '1':
-   isValid = /^[0-9]+$/.test(value);
+   isValid = /^-?[0-9]+$/.test(value);
    theBase = 'decimal';
    break;
   case '2':
-   isValid = /^[01]+$/.test(value);
+   isValid = /^-?[01]+$/.test(value);
    theBase = 'binary';
    break;
   case '3':
-   isValid = /^[0-7]+$/.test(value);
+   isValid = /^-?[0-7]+$/.test(value);
    theBase = 'octal';
    break;
   case '4':
-   isValid = /^[0-9A-Fa-f]+$/.test(value);
+   isValid = /^-?[0-9A-Fa-f]+$/.test(value);
    theBase = 'hexadecimal';
    break;
  }
@@ -74,9 +74,9 @@ function handleConversion(choice, input) {
    hexOutput = input;
    binaryOutput = convertDecimalToBase(decimalOutput, 2);
    octalOutput = convertDecimalToBase(decimalOutput, 8);
-   break;   
-   default:
-    console.error('Invalid selection. Please check the option values.');
+   break;
+  default:
+   console.error('Invalid selection. Please check the option values.');
    return;
  }
  updateUI(binaryOutput, octalOutput, hexOutput, decimalOutput);
@@ -91,17 +91,17 @@ function updateUI(binary, octal, hex, decimal) {
   case 'two':
    result = binary;
    break;
-   case 'three':
+  case 'three':
    result = octal;
    break;
-   case 'four':
+  case 'four':
    result = hex;
-   break;   
-   default:
-   console.error('check your updateUI function');   
+   break;
+  default:
+   console.error('check your updateUI function');
    break;
  }
- resultArea.innerHTML =`result is: ${result}`;
+ resultArea.innerHTML = `result is: ${result}`;
 }
 function convertDecimalToBase(number, base) {
  return parseInt(number, 10).toString(base).toUpperCase();
@@ -109,4 +109,3 @@ function convertDecimalToBase(number, base) {
 function convertToDecimal(number, base) {
  return parseInt(number, base).toString(10);
 }
- 
