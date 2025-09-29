@@ -104,9 +104,4 @@ function updateUI(binary, octal, hex, decimal) {
  }
  resultArea.innerHTML = `result is: ${result}`;
 }
-function convertDecimalToBase(number, base) {
- return parseInt(number, 10).toString(base).toUpperCase();
-}
-function convertToDecimal(number, base) {
- return parseInt(number, base).toString(10);
-}
+
