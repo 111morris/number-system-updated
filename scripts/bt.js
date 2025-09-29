@@ -12,6 +12,8 @@ function checkValidation() {
  const value = inputValue.value;
  let isValid = false;
  let theBase;
+
+ 
  switch (choice) {
   case '1':
    isValid = /^-?[0-9]+$/.test(value);
@@ -40,11 +42,14 @@ function checkValidation() {
   convertBtn.disabled = false;
  }
 }
+
 convertBtn.addEventListener('click', () => {
  const from = choiceFrom.value;
  const value = inputValue.value;
  handleConversion(from, value);
 });
+
+
 function handleConversion(choice, input) {
  switch (choice) {
   case '1':
@@ -82,6 +87,8 @@ function handleConversion(choice, input) {
  }
  updateUI(binaryOutput, octalOutput, hexOutput, decimalOutput);
 }
+
+
 function updateUI(binary, octal, hex, decimal) {
  let choice = choiceTo.value;
  let result;
@@ -108,6 +115,7 @@ function updateUI(binary, octal, hex, decimal) {
 function convertDecimalToBase(number, base) {
  return parseInt(number, 10).toString(base).toUpperCase();
 }
+
 function convertToDecimal(number, base) {
  return parseInt(number, base).toString(10);
 }
